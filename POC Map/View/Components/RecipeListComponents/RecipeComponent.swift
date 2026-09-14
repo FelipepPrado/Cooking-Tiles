@@ -5,7 +5,7 @@ struct RecipeComponent: View {
     let recipe: Recipe
     let currentStatus: recipeComponent
     var isSelected: Bool = false
-
+    
     var body: some View {
         
         switch currentStatus {
@@ -14,7 +14,6 @@ struct RecipeComponent: View {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.cream200)
                     .stroke(isSelected ? .green500 : .cream800, lineWidth: 3)
-//                    .padding(3)
                     .frame(maxWidth: 110, minHeight: 145)
                 
                 VStack(spacing: 10){
@@ -24,7 +23,6 @@ struct RecipeComponent: View {
                     Text(recipe.name)
                         .font(.hammersmith())
                         .foregroundColor(.brown200)
-    //                    .padding(.bottom, 8)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -34,34 +32,33 @@ struct RecipeComponent: View {
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(recipe.name), desbloqueada")
             .accessibilityHint("Toque duas vezes para ver detalhes")
-
+            
             
         case .locked:
-            ZStack(){
+            ZStack{
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.cream600)
                     .stroke(.cream800, lineWidth: 3)
-                    .frame(width: 110, height: 145)
+                    .frame(maxWidth: 110, maxHeight: 145)
                 
                 VStack(spacing: 10){
                     Image("padlockSymbol")
-                        .frame(width: 74, height: 74)
-                        .cornerRadius(10)
-                    
-                    HStack(spacing: 2){
-                        Text("Ver Mais")
-                            .font(Font.custom("Hammersmith One", size: 17, relativeTo: .callout))
-                    }
-                    .frame(width: 90, height: 30)
-                    .background(.green500)
-                    .cornerRadius(30)
-                    .foregroundStyle(.white)
+//                        .frame(width: 74, height: 74)
+                    Text("Ver Mais")
+                        .font(.hammersmith(fontStyle: .headline))
+                        .padding(5)
+                        .background(.green500)
+                        .cornerRadius(30)
+                        .foregroundStyle(.white)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
+                .frame(maxHeight: .infinity, alignment: .center)
+                .padding(15)
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("Receita bloqueada")
             .accessibilityHint("Toque duas vezes para ver mais informacoes")
-
+            
             
         case .unavailable:
             ZStack(){
@@ -75,14 +72,14 @@ struct RecipeComponent: View {
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("Receita indisponivel")
-
+            
         }
         
     }
 }
 
 #Preview {
-
+    
     @Previewable var recipe: Recipe = Recipe(
         name: "Receita",
         status: .locked,
@@ -98,11 +95,11 @@ struct RecipeComponent: View {
         overlayImage: "nuvem",
         portions: "duas",
         recipeDescription: " "
-        )
+    )
     var currentStatus: recipeComponent = .unlocked
-
+    
     RecipeComponent(recipe: recipe, currentStatus: currentStatus)
-
+    
 }
 
 enum recipeComponent: CaseIterable {

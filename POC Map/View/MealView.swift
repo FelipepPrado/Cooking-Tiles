@@ -20,7 +20,7 @@ struct MealView: View {
                     
                     VStack(alignment: .leading, spacing: 20){
                         Text("Receitas do Prato")
-                            .font(Font.custom("Hammersmith One", size: 22, relativeTo: .title2))
+                            .font(.hammersmith(fontStyle: .title2))
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle(.brown200)
@@ -32,7 +32,7 @@ struct MealView: View {
                                         .frame(width: 62, height: 62)
                                     
                                     Text(recipe.name)
-                                        .font(Font.custom("Hammersmith One", size: 12, relativeTo: .caption))
+                                        .font(.hammersmith(fontStyle: .caption))
                                         .foregroundStyle(.brown200)
                                         .frame(maxWidth: 100)
                                         .multilineTextAlignment(.center)
@@ -47,13 +47,13 @@ struct MealView: View {
                         
                         if !meal.comment.isEmpty{
                             Text("Comentários")
-                                .font(Font.custom("Hammersmith One", size: 24, relativeTo: .title2))
+                                .font(.hammersmith(fontStyle: .title2))
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundStyle(.brown200)
                             
                             Text(meal.comment)
-                                .font(.custom("Hammersmith One", size: 16, relativeTo: .body))
+                                .font(.hammersmith(fontStyle: .body))
                                 .foregroundStyle(.brown200)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, minHeight: 52, alignment: .topLeading)
