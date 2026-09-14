@@ -137,19 +137,19 @@ struct BrownButtonComponent: View{
                     HStack(spacing: 8){
                         Text("Adquirir: \(recipe.price)")
                             .font(.hammersmith(fontStyle: .headline))
-                            .foregroundColor(.cream500)
+                            .foregroundColor(.white)
                         
                         Image("recipeCoin")
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 20, height: 17)
-                            .foregroundStyle(.cream500)
+                            .foregroundStyle(.white)
                     }
                     .frame(width: currentButton.frameSize.width, height: currentButton.frameSize.height)
                     .glassEffect(
                         .clear
                             .tint(
-                                (canAfford ? Color.green500 : Color.brown100)
+                                (canAfford ? Color.green700.opacity(0.85) : Color.brown100)
                             )
                             .interactive(),
                         in: HexagonButtonShape()
@@ -159,16 +159,16 @@ struct BrownButtonComponent: View{
                     HStack(spacing: 8){
                         Text("Adquirir: \(recipe.price)")
                             .font(.hammersmith(fontStyle: .headline))
-                            .foregroundColor(.cream500)
+                            .foregroundColor(.white)
                         
                         Image("recipeCoin")
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 20, height: 17)
-                            .foregroundStyle(.cream500)
+                            .foregroundStyle(.white)
                     }
                     .frame(width: currentButton.frameSize.width, height: currentButton.frameSize.height)
-                    .background(canAfford ? Color.green500 : Color.brown100, in: HexagonButtonShape())
+                    .background(canAfford ? Color.green700.opacity(0.85) : Color.brown100, in: HexagonButtonShape())
                 }
             }
         }
