@@ -11,6 +11,7 @@ struct RecipeStepComponent: View {
     let isCompleted: Bool
     let onFinish: () -> Void
     let onRegister: () -> Void
+    var viewModel: StepsViewModel
     
     var body: some View {
         VStack {
@@ -19,21 +20,33 @@ struct RecipeStepComponent: View {
             VStack {
                 HStack(spacing: 30) {
                     VStack(alignment: .center, spacing: 2) {
-                        Image("anterior")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 40, height: 60)
-                            .padding(.bottom, 10)
+                        Button(action: {
+                            if viewModel.isCompleted {
+                                viewModel.isCompleted = false
+                            }else{
+                                viewModel.previousStep()
+                            }
+                           
+                        }, label: {
+                            Image("anterior")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 40, height: 60)
+                                .padding(.bottom, 10)
+                        })
+                        .buttonStyle(.plain)
                         
                         Text("Passo\nAnterior")
                             .font(.hammersmith())
                             .foregroundStyle(.cream50)
                             .multilineTextAlignment(.center)
+                            .padding(.bottom, 3)
                         
                         if detectedGesture == .voltar && (isCompleted || !isFirstStep) {
                             ProgressView(value: holdProgress)
                                 .tint(.orange)
-                                .frame(width: 50)
+                                .frame(width: 60)
+                                .scaleEffect(x: 1, y: 2, anchor: .center)
                         }
                     }
                     .accessibilityElement(children: .ignore)
@@ -44,21 +57,36 @@ struct RecipeStepComponent: View {
                     Spacer()
                     
                     VStack(alignment: .center, spacing: 2) {
-                        Image("seguinte")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 40, height: 75)
-                            .padding(.bottom, 10)
+                        Button(action: {
+                            if !viewModel.isCompleted{
+                                if viewModel.isLastStep{
+                                    viewModel.isCompleted = true
+                                } else{
+                                    viewModel.nextStep()
+                                }
+                            }
+                        }, label: {
+                            Image("seguinte")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 40, height: 75)
+                                .padding(.bottom, 10)
+                        })
+                        .buttonStyle(.plain)
+                        
                         
                         Text("Passo\nSeguinte")
                             .font(.hammersmith())
                             .foregroundStyle(.cream50)
                             .multilineTextAlignment(.center)
+                            .padding(.bottom, 3)
                         
                         if detectedGesture == .passar && !isCompleted {
                             ProgressView(value: holdProgress)
                                 .tint(.green)
-                                .frame(width: 50)
+                                .frame(width: 60)
+                                .scaleEffect(x: 1, y: 2, anchor: .center)
+
                         }
                     }
                     .accessibilityElement(children: .ignore)
