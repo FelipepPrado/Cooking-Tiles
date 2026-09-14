@@ -36,7 +36,7 @@ struct DiamondComponent: View {
                 }
                 else{
                     Text("?")
-                        .font(.custom("HammersmithOne-Regular", size: 72))
+                        .font(.custom("HammersmithOne-Regular", size: 72, relativeTo: .title3))
                         .foregroundStyle(.cream500)
                 }
             }

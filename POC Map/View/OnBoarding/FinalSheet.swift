@@ -15,7 +15,7 @@ struct FinalSheet: View {
                 .frame(height: 260)
 
             Text("Acompanhe as receitas em tempo real e **controle a passagem** de etapas por meio de poses de mão, **sem precisar encostar no celular**")
-                .font(.system(size: 20))
+                .font(Font.system(size: 16, weight: .medium))
                 .foregroundStyle(.brown700)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)

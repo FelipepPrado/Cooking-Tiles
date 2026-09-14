@@ -33,7 +33,7 @@ struct StatusCoinComponent: View {
     var body: some View {
         HStack(spacing: 3) {
             Text(formattedCoin)
-                .font(Font.custom("Hammersmith One", size: 19, relativeTo: .headline))
+                .font(.hammersmith(fontStyle: .headline))
                 .foregroundColor(.cream300)
                 .lineLimit(1)
             

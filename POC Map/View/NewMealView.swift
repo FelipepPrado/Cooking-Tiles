@@ -68,7 +68,7 @@ struct NewMealView: View {
                         
                         VStack(spacing: 20){
                             Text("Receitas do Prato")
-                                .font(Font.custom("Hammersmith One", size: 24, relativeTo: .title2))
+                                .font(.hammersmith(fontStyle: .title2))
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundStyle(.brown200)
@@ -89,7 +89,7 @@ struct NewMealView: View {
                                                             .frame(width: 70, height: 70)
                                                         
                                                         Text(category.displayName)
-                                                            .font(Font.custom("Hammersmith One", size: 12, relativeTo: .caption))
+                                                            .font(.hammersmith(fontStyle: .caption))
                                                             .foregroundStyle(.brown200)
                                                     }
                                                     
@@ -102,15 +102,16 @@ struct NewMealView: View {
                                                         }
                                                         Spacer()
                                                         Text(viewModel.recipesDic[category]?.name ?? "Sem nome")
-                                                            .font(Font.custom("Hammersmith One", size: 12, relativeTo: .caption))
+                                                            .font(.hammersmith(fontStyle: .caption))
                                                             .foregroundStyle(.brown200)
                                                             .frame(maxWidth: 100)
                                                             .multilineTextAlignment(.center)
+                                                            .fixedSize(horizontal: false, vertical: true)
                                                         
                                                     }
                                                 }
                                             })
-                                            .frame(maxWidth: 88, maxHeight: 112)
+                                            .frame(maxWidth: 88, maxHeight: 125)
                                             .accessibilityLabel(viewModel.recipesDic[category] != nil
                                                                 ? "\(category.displayName): \(viewModel.recipesDic[category]?.name ?? "")"
                                                                 : "Selecionar \(category.displayName)")
@@ -131,7 +132,7 @@ struct NewMealView: View {
                                                 .frame(width: 70, height: 70)
                                             
                                             Text(RecipeCategory.sobremesa.displayName)
-                                                .font(Font.custom("Hammersmith One", size: 12, relativeTo: .caption))
+                                                .font(.hammersmith(fontStyle: .caption))
                                                 .foregroundStyle(.brown200)
                                         }
                                     }
@@ -143,19 +144,20 @@ struct NewMealView: View {
                                             }
                                             
                                             Text(viewModel.recipesDic[.sobremesa]?.name ?? "Sem nome")
-                                                .font(Font.custom("Hammersmith One", size: 12, relativeTo: .caption))
+                                                .font(.hammersmith(fontStyle: .caption))
                                                 .foregroundStyle(.brown200)
                                                 .frame(maxWidth: 100)
                                                 .multilineTextAlignment(.center)
+                                                .fixedSize(horizontal: false, vertical: true)
                                         }
                                     }
                                 })
-                                .frame(maxWidth: 88, maxHeight: 112)
+                                .frame(maxWidth: 88, maxHeight: 125)
                                 
                             }
                             
                             Text("Comentários")
-                                .font(Font.custom("Hammersmith One", size: 24, relativeTo: .title2))
+                                .font(.hammersmith(fontStyle: .title2))
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundStyle(.brown200)
@@ -193,7 +195,7 @@ struct NewMealView: View {
                         ToolbarItem(placement: .navigationBarTrailing){
                             Button(action: {
                                 viewModel.addMeal(context: modelContext, player)
-                                viewRouter.removeLast()
+                                viewRouter.clear()
                             }, label: {
                                 HStack(spacing: 4){
                                     Text("+\(viewModel.actualScore)")

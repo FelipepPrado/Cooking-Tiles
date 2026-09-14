@@ -54,7 +54,7 @@ struct BrownButtonComponent: View{
             if recipe.status == .unlocked {
                 HStack(spacing: 8){
                     Text(title ?? "Ver Mais")
-                        .font(Font.custom("Hammersmith One", size: 17, relativeTo: .callout))
+                        .font(.hammersmith(fontStyle: .headline))
                         .foregroundColor(.cream500)
                 }
                 .frame(width: currentButton.frameSize.width, height: currentButton.frameSize.height)
@@ -67,7 +67,7 @@ struct BrownButtonComponent: View{
                 
                 HStack(spacing: 8){
                     Text("Adquirir: \(recipe.price)")
-                        .font(Font.custom("Hammersmith One", size: 17, relativeTo: .headline))
+                        .font(.hammersmith(fontStyle: .headline))
                         .foregroundColor(.cream500)
                     
                     Image("recipeCoin")
@@ -90,7 +90,7 @@ struct BrownButtonComponent: View{
             
             VStack{
                 Text(title ?? "Iniciar Receita")
-                    .font(Font.custom("Hammersmith One", size: 17, relativeTo: .headline))
+                    .font(.hammersmith(fontStyle: .headline))
                     .foregroundColor(.brown200)
             }
             .frame(width: currentButton.frameSize.width, height: currentButton.frameSize.height)
@@ -110,7 +110,7 @@ struct BrownButtonComponent: View{
                 if #available(iOS 26.0, *) {
                     VStack{
                         Text("Iniciar Receita")
-                            .font(Font.custom("Hammersmith One", size: 17, relativeTo: .headline))
+                            .font(.hammersmith(fontStyle: .headline))
                             .foregroundColor(.white)
                     }
                     .frame(width: currentButton.frameSize.width, height: currentButton.frameSize.height)
@@ -124,7 +124,7 @@ struct BrownButtonComponent: View{
                 else{
                     VStack{
                         Text("Iniciar Receita")
-                            .font(Font.custom("Hammersmith One", size: 17, relativeTo: .headline))
+                            .font(.hammersmith(fontStyle: .headline))
                             .foregroundColor(.white)
                     }
                     .frame(width: currentButton.frameSize.width, height: currentButton.frameSize.height)
@@ -136,7 +136,7 @@ struct BrownButtonComponent: View{
                 if #available(iOS 26.0, *) {
                     HStack(spacing: 8){
                         Text("Adquirir: \(recipe.price)")
-                            .font(Font.custom("Hammersmith One", size: 17, relativeTo: .headline))
+                            .font(.hammersmith(fontStyle: .headline))
                             .foregroundColor(.cream500)
                         
                         Image("recipeCoin")
@@ -158,7 +158,7 @@ struct BrownButtonComponent: View{
                 else{
                     HStack(spacing: 8){
                         Text("Adquirir: \(recipe.price)")
-                            .font(Font.custom("Hammersmith One", size: 17, relativeTo: .headline))
+                            .font(.hammersmith(fontStyle: .headline))
                             .foregroundColor(.cream500)
                         
                         Image("recipeCoin")

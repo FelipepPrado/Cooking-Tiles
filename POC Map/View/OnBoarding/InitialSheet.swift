@@ -22,7 +22,8 @@ struct InitialSheet: View {
                 }
                 
                 Text("Um aplicativo em que você pode descobrir **receitas novas**, **cadastrar refeições** realizadas e acompanhar as etapas de cozinha **sem interagir com o celular!**")
-                    .font(.system(size: 16))
+                    .font(Font.system(size: 16, weight: .medium))
+                    .fixedSize(horizontal: false, vertical: true)
                     .foregroundStyle(Color.brown700)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
