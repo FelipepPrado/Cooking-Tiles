@@ -18,13 +18,15 @@ struct DescriptionComponent: View {
         switch currentStatus{
             
         case .detailViewUnlocked:
-            VStack(alignment: .leading){
-                Text(recipe.recipeDescription)
-                    .font(.hammersmith())
-                    .multilineTextAlignment(.leading)
-                    .padding(.top, 10)
-                    .frame(maxWidth: 260, maxHeight: 260, alignment: .topLeading)
-                    .foregroundStyle(Color.brown700)
+            ScrollView{
+                VStack(alignment: .leading){
+                    Text(recipe.recipeDescription)
+                        .font(.hammersmith())
+                        .multilineTextAlignment(.leading)
+                        .padding(.top, 10)
+                        .frame(maxWidth: 260, maxHeight: 260, alignment: .topLeading)
+                        .foregroundStyle(Color.brown700)
+                }
             }
             .frame(minWidth: 280, maxHeight: 280)
             .background(Color.cream600)
