@@ -10,19 +10,42 @@ struct CameraView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            
+            let horizontalPadding: CGFloat = 12
+            let cornerRadius: CGFloat = 28
+
+            let previewWidth = max(
+                geometry.size.width - (horizontalPadding * 2),
+                1
+            )
+
+            let previewHeight = max(
+                geometry.size.height * 0.68,
+                1
+            )
+            
             VStack(spacing: 0) {
-                if model.photoData == nil{
-                    topBar
-                }
+                topBar
+                    .opacity(model.photoData == nil ? 1 : 0)
                 
                 viewfinder
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(
+                        width: previewWidth,
+                        height: previewHeight,
+                        alignment: .center
+                    )
+                    .clipShape(
+                        RoundedRectangle(
+                            cornerRadius: cornerRadius,
+                            style: .continuous
+                        )
+                    )
+                    .frame(maxWidth: .infinity)
                 
-                if model.photoData == nil{
-                    bottomBar
-                }
+                bottomBar
+                    .opacity(model.photoData==nil ? 1 : 0)
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .background(.black)
         .foregroundStyle(.white)
@@ -91,7 +114,7 @@ struct CameraView: View {
         if let image = model.photoImage {
             Image(uiImage: image)
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .accessibilityLabel("Foto capturada")
         } else if model.accessDenied {
             ContentUnavailableView {
@@ -159,6 +182,7 @@ struct CameraView: View {
                             .white.opacity(isActive ? 0.22 : 0),
                             in: Circle()
                         )
+                        .minimumScaleFactor(0.8)
                         .contentShape(Circle())
                     }
                     .buttonStyle(.plain)
