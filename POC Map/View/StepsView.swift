@@ -56,7 +56,8 @@ struct StepsView: View {
                             },
                             onRegister: {
                                 viewRouter.newMealView()
-                            }
+                            },
+                            viewModel: viewModel
                         )
                     }
                 }

@@ -48,11 +48,14 @@ final class StepsViewModel{
     var isLastStep: Bool {
         currentStepIndex == totalSteps - 1
     }
+
     
     func nextStep() {
         guard !isLastStep else { return }
         currentStepIndex += 1
     }
+    
+
     
     func previousStep() {
         guard !isFirstStep else { return }
